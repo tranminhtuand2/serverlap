@@ -2,6 +2,7 @@ const Router=require('express');
 var cacheService = require('express-api-cache')
 var cache = cacheService.cache;
 /*
+sử dung thư viện expree-api-cache để tăng tốc độ truy cập 
 valid units - ms, second, minute, hour, day, week, month.
 duration format - [time][unit] as 5 minutes
 */
