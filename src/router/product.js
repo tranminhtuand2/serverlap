@@ -3,6 +3,7 @@ var cacheService = require('express-api-cache')
 var cache = cacheService.cache;
 /*
 sử dung thư viện expree-api-cache để tăng tốc độ truy cập 
+sử dụng bộ nhớ đệm từ server express 
 valid units - ms, second, minute, hour, day, week, month.
 duration format - [time][unit] as 5 minutes
 */
@@ -17,7 +18,7 @@ router.get('/',(req,res)=>{
 });
 //total product
 router.get('/totalitem',cache("1 minutes"),(req,res)=>{
-     // Do some work to retrieve movies and request before 10 minutes will get movies from cache
+     // Do some work to retrieve movies and request before 1 minutes will get movies from cache
     var sql="SELECT * FROM sanpham" ;
     const d = new Date();
     let seconds1 = d.getSeconds();
