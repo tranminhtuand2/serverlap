@@ -58,6 +58,9 @@ app.set('port',process.env.PORT || 3000);
 app.use(express.json());
 //Router
 app.use(require('./src/router/product'))
+var userrouter = require('./src/router/user')
+app.use('/user',userrouter);
+
 //
 
 app.listen(app.get('port'),()=>{
