@@ -89,6 +89,7 @@ router.delete('/delete/:id',(req,res)=>{
  // phan trang
 router.get('/danhmuc/',(req,res) => {
 	var limit = 5;
+    //doi thanh query
 	var ofsset = (req.query.page -1) * limit;
 	var sql = "SELECT * FROM `sanpham`ORDER BY `ID` DESC LIMIT "+ofsset+","+limit;
 		
