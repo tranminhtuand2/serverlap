@@ -7,9 +7,11 @@ router.post('/dangky/',(req, res) => {
     const{name,password,sdt,type}=req.body;
     console.log(req.body);
     var sql='INSERT INTO `user`(`name`, `password`, `sdt`, `type`) VALUES (?, ?, ?,?)';
+    
     dbuser.query(sql,[name,password,sdt,type],function(err,result){
         if(!err){
             res.json({statusbar:'register succes',})
+
         }else{
             console.log(err);
         }

@@ -2,7 +2,7 @@ const Router=require('express');
 var cacheService = require('express-api-cache')
 var cache = cacheService.cache;
 /*
-sử dung thư viện expree-api-cache để tăng tốc độ truy cập 
+sử dung thư viện exprees-api-cache để tăng tốc độ truy cập 
 sử dụng bộ nhớ đệm từ server express 
 valid units - ms, second, minute, hour, day, week, month.
 duration format - [time][unit] as 5 minutes
@@ -17,8 +17,8 @@ router.get('/',(req,res)=>{
     res.send("hello");
 });
 //total product
-router.get('/totalitem',cache("1 minutes"),(req,res)=>{
-     // Do some work to retrieve movies and request before 1 minutes will get movies from cache
+router.get('/totalitem',cache("10 minutes"),(req,res)=>{
+     // Do some work to retrieve movies and request before 10 minutes will get movies from cache
     var sql="SELECT * FROM sanpham" ;
     const d = new Date();
     let seconds1 = d.getSeconds();
@@ -87,14 +87,14 @@ router.delete('/delete/:id',(req,res)=>{
     });
 });
  // phan trang
-router.get('/danhmuc/:page',(req,res) => {
+router.get('/danhmuc/',(req,res) => {
 	var limit = 5;
-	var ofsset = (req.params.page -1) * limit;
-	var sql = "SELECT ID,tensp FROM `sanpham`ORDER BY `ID` DESC LIMIT "+ofsset+","+limit;
+	var ofsset = (req.query.page -1) * limit;
+	var sql = "SELECT * FROM `sanpham`ORDER BY `ID` DESC LIMIT "+ofsset+","+limit;
 		
 	mysqlConnection.query(sql,function(error,result){
 		if(error) throw error;
-		console.log("get from db");
+		console.log("phantrang db");
 		res.json(result);
 	});
 })
